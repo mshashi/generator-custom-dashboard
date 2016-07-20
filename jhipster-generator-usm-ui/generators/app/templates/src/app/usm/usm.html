@@ -1,0 +1,30 @@
+<table>
+<tr ><td ng-repeat = "featureGroup in featureGroups">
+  <div class="usmModule"><div align="center" class="usmClickable"><span ng-bind="featureGroup.status"></span><br/><hr/><div align="center" ng-click="getFeatureDetails(featureGroup)" class="usmClickable"><span ng-bind="featureGroup.featureName"></span></div></div>
+  </td></tr>
+</table>
+
+<style>
+.usmModule{
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 10px; 
+    width: 200px;
+    max-width: 400px;
+    background: #ff8533;
+    
+}
+
+.usmModule hr{
+  border: 1px solid black;
+  border-color:black;
+}
+
+.usmModule span{
+  color:white;
+}
+
+.usmClickable{
+  cursor: pointer;
+}
+</style>

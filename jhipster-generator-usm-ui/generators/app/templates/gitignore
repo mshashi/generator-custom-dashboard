@@ -1,0 +1,10 @@
+target/
+node_modules/
+.sass-cache
+*.sublime-*
+.DS_Store
+.svn*
+.project
+.settings/
+.idea/
+*.iml
