@@ -12,6 +12,8 @@
 		
 	<mvc:annotation-driven />
 
+	<import resource="classpath:/spring/usm-application-context.xml"/>
+
 	<mvc:resources mapping="/**" location="/WEB-INF/" />
 		
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver">
@@ -72,6 +74,18 @@
 
 <bean id="jacksonObjectMapper" class="<%= properties.packageName %>.util.USMDashboardMapper" />
 
-	<context:component-scan base-package="<%= properties.packageName %>" /> 
+
+<!-- Controllers -->
+	<bean id="applicationController" class="<%= properties.packageName %>.controller.ApplicationController">
+	<constructor-arg ref="httpClient"/>
+	</bean>
+
+	<!-- Services -->
+
+	<bean id="applicationService" class="<%= properties.packageName %>.service.ApplicationService">
+	
+	</bean>
+
+	<!-- <context:component-scan base-package="<%= properties.packageName %>" />  -->
 
 </beans>

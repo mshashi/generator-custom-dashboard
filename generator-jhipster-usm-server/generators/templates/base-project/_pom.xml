@@ -50,7 +50,7 @@
 						</systemProperty>
 						<systemProperty>
 							<name>jbs.name</name>
-							<value>dev</value>
+							<value>${uprr.implementation.environment}</value>
 						</systemProperty>
 						<systemProperty>
 							<name>logback.configurationFile</name>
@@ -58,7 +58,7 @@
 						</systemProperty>
 						<systemProperty>
 							<name>uprr.implementation.environment</name>
-							<value>dev</value>
+							<value>${uprr.implementation.environment}</value>
 						</systemProperty>
 					</systemProperties>
 					<webAppConfig>

@@ -7,7 +7,9 @@
     "jhipster-module"
   ],
   "homepage": "https://github.com/prokarma/generator-jhipster-usm-server",
-  "bugs": "https://github.com/prokarma/generator-jhipster-usm-server/issues",
+  "bugs": {
+    "url": "https://github.com/prokarma/generator-jhipster-usm-server/issues"
+  },
   "author": {
     "name": "Vinay Yennampally",
     "email": "vinay_y2@yahoo.com",
@@ -42,14 +44,12 @@
     "gulp-sequence": "0.4.4",
     "gulp-shell": "^0.5.1",
     "mocha": "2.3.4",
+    "yamljs": "^0.2.8",
     "yeoman-assert": "2.1.1",
     "yeoman-test": "1.0.0"
   },
   "scripts": {
     "test": "mocha test/*"
   },
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/prokarma/generator-jhipster-usm-server/issues"
-  }
+  "license": "Apache-2.0"
 }

@@ -1,11 +1,13 @@
 'use strict';
 var yeoman = require('yeoman-generator');
  var _ = require('lodash');
+ var yamljs = require('yamljs');
+ var fs  = require('fs');
 
-
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
   
   initializing: function () {
+
     this.fields = [];
     this.properties={};
   
@@ -97,7 +99,7 @@ module.exports = yeoman.generators.Base.extend({
 		this.properties.fields= this.fields;
 		cb();
 		}
-		}.bind(this));
+    }.bind(this));
 	};
   },
 
