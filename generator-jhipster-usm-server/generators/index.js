@@ -3,10 +3,18 @@ var yeoman = require('yeoman-generator');
  var _ = require('lodash');
  var yamljs = require('yamljs');
  var fs  = require('fs');
+ var chalk  = require('chalk');
 
 module.exports = yeoman.Base.extend({
   
   initializing: function () {
+
+    try{
+      require('../config.yml');
+    }catch(e){
+      console.log(chalk.red.bold('config.yml is missing. Please add the file to the installation directory'));
+      process.exit(1);
+    }
 
     this.fields = [];
     this.properties={};
@@ -149,7 +157,7 @@ module.exports = yeoman.Base.extend({
       var entityClass=              this.properties.entityClass
 
        for (var f in genericTemplateFiles)
-        this.template(baseProjectPath + genericTemplateFiles[f], genericTemplateFiles[f].substr(1,500), this);
+      this.template(baseProjectPath + genericTemplateFiles[f], genericTemplateFiles[f].substr(1,500), this);
 
    
       this.directory(baseProjectPath + 'src/main/webapp/', 'src/main/webapp/');
@@ -161,7 +169,7 @@ module.exports = yeoman.Base.extend({
 
      
       this.template(baseProjectPath + '_web.xml', 'src/main/webapp/WEB-INF/web.xml', this);
-	this.template(baseProjectPath + 'src/main/resources/logback.xml', 'src/main/resources/logback.xml', this);
+	    this.template(baseProjectPath + 'src/main/resources/logback.xml', 'src/main/resources/logback.xml', this);
       
       this.template(baseProjectPath + 'src/main/webapp/config/config.properties', 'src/main/webapp/config/config.properties', this);
       this.template(baseProjectPath + 'src/main/resources/spring/application-config.xml', 'src/main/resources/spring/application-config.xml', this);
@@ -170,6 +178,7 @@ module.exports = yeoman.Base.extend({
 
       this.template(javaSrcPath + 'package/util/USMDashboardMapper.java', javaPath + 'util/USMDashboardMapper.java', this);
       this.template(javaSrcPath + 'package/controller/ApplicationController.java', javaPath + 'controller/ApplicationController.java', this);
+      this.template(javaSrcPath + 'package/controller/BaseController.java', javaPath + 'controller/BaseController.java', this);
       this.template(javaSrcPath + 'Entity.java', javaPath +'dto/'+ entityClass+'.java', this);
       this.template(javaSrcPath + 'package/service/ApplicationService.java', javaPath + 'service/ApplicationService.java', this);
 
