@@ -6,16 +6,12 @@ var yeoman = require('yeoman-generator');
 module.exports = yeoman.generators.Base.extend({
   
   initializing: function () {
-    this.pkg = require('../package.json');
-    /*this.prompts = require('./prompts');*/
     this.fields = [];
     this.properties={};
-    
-   
+  
     this.askForField=function (cb) {
-    
-	/*this.log('Thank you ');*/
-	var prompts = [
+  
+  var prompts = [
 		{
             type: 'confirm',
             name: 'fieldAdd',
@@ -119,7 +115,7 @@ module.exports = yeoman.generators.Base.extend({
 					if (/^([a-z_]{1}[a-z0-9_]*(\.[a-z_]{1}[a-z0-9_]*)*)$/.test(input)) return true;
 					return 'The package name you have provided is not a valid Java package name.'; 
 				  },
-      default: 'com.pkrm.myapp'
+      default: 'com.pkrm.usm.dashboard.server'
 		},
     { type: 'input', name: 'url', message: 'Enter the rest url to be called ?', default: '' },
 		{ type: 'input',name: 'entityClass',message: 'What\'s the name of the request DTO',default: 'USMRequest'}
@@ -127,7 +123,7 @@ module.exports = yeoman.generators.Base.extend({
 
 	this.prompt(prompts, function (props) {
 		this.properties               = props;
-		this.properties.generatorName = this.pkg.name;
+		this.properties.generatorName = 'generator-jhipster-usm-server';
 		//done();
 		this.askForField(done);
 	}.bind(this));

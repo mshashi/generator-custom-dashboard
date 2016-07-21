@@ -1,7 +1,7 @@
 {
   "name": "generator-jhipster-usm-server",
   "version": "0.0.0",
-  "description": "sample server",
+  "description": "Generator to create USM Dashboard server, that interacts with other Restful Services, XMF Services or Database to fetch the data.",
   "keywords": [
     "yeoman-generator",
     "jhipster-module"
