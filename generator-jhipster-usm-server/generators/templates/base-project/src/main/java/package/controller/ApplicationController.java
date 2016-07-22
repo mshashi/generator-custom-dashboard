@@ -22,7 +22,6 @@ public class ApplicationController extends BaseController{
 	@Autowired
 	private ApplicationService applicationService;
 
-    @Autowired
     private HttpClient httpClient;
 
     private String restEndHost;
@@ -30,6 +29,10 @@ public class ApplicationController extends BaseController{
 	private Logger logger = Logger.getLogger(getClass().getName());
 
 	private ApplicationController() { }
+
+    private ApplicationController(HttpClient httpClient) { 
+        this.httpClient = httpClient;
+    }
 
     @SuppressWarnings("rawtypes")
 	@RequestMapping(value="<%= properties.methodURL %>", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -52,10 +55,6 @@ public class ApplicationController extends BaseController{
 
     public void setRestEndHost(String restEndHost){
         this.restEndHost = restEndHost;
-    }
-
-    public void setHttpClient(HttpClient httpClient){
-        this.httpClient = httpClient;
     }
 
 }

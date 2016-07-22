@@ -80,6 +80,7 @@
 
 <!-- Controllers -->
 	<bean id="applicationController" class="<%= properties.packageName %>.controller.ApplicationController">
+	<constructor-arg ref="httpClient" />
 	<property name="restEndHost" value = "${host}" />
 	</bean>
 
