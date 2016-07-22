@@ -30,7 +30,7 @@ public class ApplicationController extends BaseController{
 
 	private ApplicationController() { }
 
-    private ApplicationController(HttpClient httpClient) { 
+    public ApplicationController(HttpClient httpClient) { 
         this.httpClient = httpClient;
     }
 
