@@ -10,11 +10,13 @@ module.exports = yeoman.Base.extend({
   initializing: function () {
 
     try{
-      require('../config.yml');
+      fs.lstatSync('config.yml');
     }catch(e){
       console.log(chalk.red.bold('config.yml is missing. Please add the file to the installation directory'));
       process.exit(1);
     }
+
+    this.configYMLObject = yamljs.load('config.yml');
 
     this.fields = [];
     this.properties={};
@@ -127,7 +129,8 @@ module.exports = yeoman.Base.extend({
 				  },
       default: 'com.pkrm.usm.dashboard.server'
 		},
-    { type: 'input', name: 'url', message: 'Enter the rest url to be called ?', default: '' },
+    {type: 'input', name: 'methodURL', message: 'Enter the end point URL ?',default: '/getFeatures'},
+    { type: 'input', name: 'url', message: 'Enter the external end point URL to be called ?', default: '/getUSMFeatureDetails' },
 		{ type: 'input',name: 'entityClass',message: 'What\'s the name of the request DTO',default: 'USMRequest'}
 	];
 
@@ -154,37 +157,53 @@ module.exports = yeoman.Base.extend({
       var javaSrcTestPath         = baseProjectPath + 'src/test/java/'
       var javaPath                = 'src/main/java/' + packagePath + '/';
       var javaTestPath            = 'src/test/java/' + packagePath + '/';
-      var entityClass=              this.properties.entityClass
+      var entityClass=              this.properties.entityClass;
+      this.host = this.configYMLObject  && this.configYMLObject.host ?this.configYMLObject.host: {dev:'',local:''};
+      
+
+      // if(this.configYMLObject){
+      //   host.dev = this.configYMLObject.host && this.configYMLObject.host.dev ? this.configYMLObject.host.dev: '';
+      //   host.local = this.configYMLObject.local && this.configYMLObject.host.local ? this.configYMLObject.host.local: '';
+      // }
 
        for (var f in genericTemplateFiles)
       this.template(baseProjectPath + genericTemplateFiles[f], genericTemplateFiles[f].substr(1,500), this);
 
-   
+      // Directories
       this.directory(baseProjectPath + 'src/main/webapp/', 'src/main/webapp/');
-      this.directory(baseProjectPath + 'src/main/resources/', 'src/main/resources/');
       this.directory(baseProjectPath + 'src/test/resources/', 'src/test/resources/');
-
       this.directory(baseProjectPath + 'src/main/java/package/', 'src/main/java/' + packagePath + '/');
       this.directory(baseProjectPath + 'src/test/java/package/', 'src/test/java/' + packagePath + '/');
 
      
+      // src/main/webapp files
       this.template(baseProjectPath + '_web.xml', 'src/main/webapp/WEB-INF/web.xml', this);
-	    this.template(baseProjectPath + 'src/main/resources/logback.xml', 'src/main/resources/logback.xml', this);
-      
       this.template(baseProjectPath + 'src/main/webapp/config/config.properties', 'src/main/webapp/config/config.properties', this);
+
+
+	    // src/main/resources files
+      this.template(baseProjectPath + 'src/main/resources/logback.xml', 'src/main/resources/logback.xml', this);
+      this.template(baseProjectPath + 'src/main/resources/log4j2.xml', 'src/main/resources/log4j2.xml', this);
+      this.template(baseProjectPath + 'src/main/resources/_dev.properties', 'src/main/resources/dev.properties', this);
+      this.template(baseProjectPath + 'src/main/resources/_local.properties', 'src/main/resources/local.properties', this);
       this.template(baseProjectPath + 'src/main/resources/spring/application-config.xml', 'src/main/resources/spring/application-config.xml', this);
       this.template(baseProjectPath + 'src/main/resources/spring/mvc-config.xml', 'src/main/resources/spring/mvc-config.xml', this);
-      this.template(baseProjectPath + 'src/main/resources/log4j2.xml', 'src/main/resources/log4j2.xml', this);
+      this.template(baseProjectPath + 'src/main/resources/spring/usm-application-context.xml', 'src/main/resources/spring/usm-application-context.xml', this);
 
+
+      // src/main/java files
       this.template(javaSrcPath + 'package/util/USMDashboardMapper.java', javaPath + 'util/USMDashboardMapper.java', this);
       this.template(javaSrcPath + 'package/controller/ApplicationController.java', javaPath + 'controller/ApplicationController.java', this);
       this.template(javaSrcPath + 'package/controller/BaseController.java', javaPath + 'controller/BaseController.java', this);
       this.template(javaSrcPath + 'Entity.java', javaPath +'dto/'+ entityClass+'.java', this);
       this.template(javaSrcPath + 'package/service/ApplicationService.java', javaPath + 'service/ApplicationService.java', this);
 
+
+      // src/test/java files
       this.template(javaSrcTestPath + 'package/controller/ApplicationControllerTest.java', javaTestPath + 'controller/ApplicationControllerTest.java', this);
       this.template(javaSrcTestPath + 'package/service/ApplicationServiceTest.java', javaTestPath + 'service/ApplicationServiceTest.java', this);
 
+      // src/test/resources files
       this.template(baseProjectPath + 'src/test/resources/config/config.test.properties', 'src/test/resources/config/config.test.properties', this);
 
     },

@@ -12,9 +12,12 @@
 		
 	<mvc:annotation-driven />
 
+	<context:property-placeholder location="classpath:${uprr.implementation.environment}.properties"/>
 	<import resource="classpath:/spring/usm-application-context.xml"/>
 
 	<mvc:resources mapping="/**" location="/WEB-INF/" />
+
+	<bean id="jacksonObjectMapper" class="<%= properties.packageName %>.util.USMDashboardMapper" />
 		
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver">
 	        <property name="prefix" value="/WEB-INF/"/>
@@ -72,12 +75,12 @@
     </mvc:message-converters>
 </mvc:annotation-driven>
 
-<bean id="jacksonObjectMapper" class="<%= properties.packageName %>.util.USMDashboardMapper" />
+
 
 
 <!-- Controllers -->
 	<bean id="applicationController" class="<%= properties.packageName %>.controller.ApplicationController">
-	<constructor-arg ref="httpClient"/>
+	<property name="restEndHost" value = "${host}" />
 	</bean>
 
 	<!-- Services -->

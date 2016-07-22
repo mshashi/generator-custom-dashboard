@@ -13,11 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
-
-
 import <%= properties.packageName %>.service.ApplicationService;
 import <%= properties.packageName %>.dto.<%= properties.entityClass %>;
 
@@ -27,26 +22,25 @@ public class ApplicationController extends BaseController{
 	@Autowired
 	private ApplicationService applicationService;
 
-    @Autowired  
+    @Autowired
     private HttpClient httpClient;
+
+    private String restEndHost;
 
 	private Logger logger = Logger.getLogger(getClass().getName());
 
 	private ApplicationController() { }
 
-    public ApplicationController(HttpClient httpClient) {
-    this.httpClient = httpClient;
-    }
-
-	@SuppressWarnings("rawtypes")
-	@RequestMapping(value="/FeatureGroup/getFeatureGroups", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @SuppressWarnings("rawtypes")
+	@RequestMapping(value="<%= properties.methodURL %>", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseBody ResponseEntity config(@RequestBody  final  <%= properties.entityClass %> request) {
        
        try {
-            
             String apiUrl = "<%= properties.url %>";
+
+            String URI = restEndHost + apiUrl;
            
-            HttpResponse httpResponse = httpClient.execute(getPostRequest(apiUrl,request));
+            HttpResponse httpResponse = httpClient.execute(getPostRequest(URI,request));
 
             return getResponseAsString(httpResponse);
         } catch (Exception e) {
@@ -54,6 +48,14 @@ public class ApplicationController extends BaseController{
             // TODO: handle exception
         }
         return null;
+    }
+
+    public void setRestEndHost(String restEndHost){
+        this.restEndHost = restEndHost;
+    }
+
+    public void setHttpClient(HttpClient httpClient){
+        this.httpClient = httpClient;
     }
 
 }
