@@ -5,7 +5,7 @@ var yosay = require('yosay');
 var packagejs = require(__dirname + '/../../package.json');
 
 // Stores JHipster variables
-var jhipsterVar = {moduleName: 'usm-ui'};
+var jhipsterVar = {moduleName: 'usm-ui',packageName: "com.mycompany.myapp",angularAppName: "usm-ui",webappDir:"target"};
 
 // Stores JHipster functions
 var jhipsterFunc = {};

@@ -57,5 +57,5 @@
     "engines": {
         "node": ">=0.8.0"
     },
-    "_app-generator-version": "<%= pkg.version %>"
+    "_app-generator-version": "0.0.0"
 }
