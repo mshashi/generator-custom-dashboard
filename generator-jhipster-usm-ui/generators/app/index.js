@@ -14,18 +14,18 @@ module.exports = yeoman.Base.extend({
 
   initializing: {
    
-    compose: function (args) {
-      this.composeWith('jhipster:modules',
-        {
-          options: {
-            jhipsterVar: jhipsterVar,
-            jhipsterFunc: jhipsterFunc
-          }
-        },
-	 this.pkg = require(__dirname + '/../../package.json'),
-        this.options.testmode ? {local: require.resolve('generator-jhipster/modules')} : null
-      );
-    },
+  //   compose: function (args) {
+  //     this.composeWith('jhipster:modules',
+  //       {
+  //         options: {
+  //           jhipsterVar: jhipsterVar,
+  //           jhipsterFunc: jhipsterFunc
+  //         }
+  //       },
+	 // this.pkg = require(__dirname + '/../../package.json'),
+  //       this.options.testmode ? {local: require.resolve('generator-jhipster/modules')} : null
+  //     );
+  //   },
     displayLogo: function () {
       // Have Yeoman greet the user.
       this.log('Welcome to the ' + chalk.red('JHipster usm-ui') + ' generator! ' + chalk.yellow('v' + packagejs.version + '\n'));
@@ -45,21 +45,21 @@ module.exports = yeoman.Base.extend({
             type: 'input',
             name: 'tla',
             message: 'Please enter your TLA',
-            default: 'tla',
+            default: 'tos',
             required: true
         },
 	{
             type: 'input',
             name: 'port',
             message: 'Please enter server port number',
-            default: '',
+            default: '8081',
             required: true
         },
 	{
             type: 'input',
             name: 'serviceURL',
-            message: 'Please enter service URL.',
-            default: '',
+            message: 'Please enter service URL',
+            default: '/getFeatures',
             required: true
         }];
 
