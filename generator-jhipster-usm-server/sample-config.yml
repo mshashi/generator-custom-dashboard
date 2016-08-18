@@ -1,4 +1,22 @@
 --- 
+projectName: 
+
 host: 
  dev: http://localhost:9091
  local: http://localhost:8081
+
+POJO:
+  Employee:
+    variables:
+     - employeeId:
+         type: 'int'
+         default: 1
+     - employeeName:
+         type: 'String'
+         default: 'Shashi'
+
+
+    
+
+
+ 
