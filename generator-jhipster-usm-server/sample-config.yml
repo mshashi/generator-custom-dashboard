@@ -11,8 +11,8 @@ restEndURL: "/getUSMFeatureDetails"
 entityClass: "USMRequest"
 
 host: 
- dev: http://localhost:9091
- local: http://localhost:8081
+ dev: http://localhost:8083
+ local: http://localhost:8083
 
 POJO:
   USMRequest:
