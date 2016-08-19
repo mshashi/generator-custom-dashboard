@@ -1,34 +1,27 @@
-package  <%= properties.packageName %>.dto;
-
+package  <%= packageName %>.dto;
 
 import java.io.Serializable;
 
-
-
-
-
-public class <%= properties.entityClass %> implements Serializable {
+public class <%= className %> implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-
-    <%_ for (idx in properties.fields) {
+    <%_ for (idx in fields) {
    
-        var fieldType = properties.fields[idx].fieldType;
-        var fieldName = properties.fields[idx].fieldName;
-        var fieldInJavaBeanMethod = properties.fields[idx].fieldInJavaBeanMethod;
+        var variableType = fields[idx].variableType;
+        var variableName = fields[idx].variableName;
+        var variableMethodName = fields[idx].variableMethodName;
+       
     _%>
     
-    private <%= fieldType %> <%= fieldName %>;
+    private <%= variableType %> <%= variableName %>;
     
-    public String get<%= fieldInJavaBeanMethod %>() {
-        return <%= fieldName %>;
+    public String get<%= variableMethodName %>() {
+        return <%= variableName %>;
     }
        
-    public void set<%= fieldInJavaBeanMethod %>(String <%= fieldName %>) {
-	   this.<%= fieldName %> = <%= fieldName %>;
+    public void set<%= variableMethodName %>(String <%= variableName %>) {
+	   this.<%= variableName %> = <%= variableName %>;
     }
-
 
  <%_ } _%>
   

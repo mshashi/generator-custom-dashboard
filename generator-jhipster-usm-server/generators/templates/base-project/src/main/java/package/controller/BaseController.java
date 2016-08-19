@@ -1,4 +1,4 @@
-package <%= properties.packageName %>.controller;
+package <%= packageName %>.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -23,7 +23,7 @@ class BaseController {
 	public HttpPost getPostRequest(String apiBaseURI, Object requestObject)
 			throws URISyntaxException, JsonProcessingException, UnsupportedEncodingException {
 		URIBuilder builder = new URIBuilder(apiBaseURI);
-		builder.addParameter("tla", "<%= properties.tla %>");
+		builder.addParameter("tla", "<%= tla %>");
 
 		String listStubsUri = builder.build().toString();
 		HttpPost postRequest = new HttpPost(listStubsUri);

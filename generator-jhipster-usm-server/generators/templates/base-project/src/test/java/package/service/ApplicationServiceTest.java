@@ -1,4 +1,4 @@
-package <%= properties.packageName %>.service;
+package <%= packageName %>.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

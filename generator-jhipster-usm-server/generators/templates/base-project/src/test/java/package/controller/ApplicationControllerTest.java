@@ -1,4 +1,4 @@
-package <%= properties.packageName %>.controller;
+package <%= packageName %>.controller;
 
 import java.util.Map;
 

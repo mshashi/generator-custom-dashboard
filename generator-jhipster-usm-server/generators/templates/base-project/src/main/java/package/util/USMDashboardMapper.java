@@ -1,4 +1,4 @@
-package <%= properties.packageName %>.util;
+package <%= packageName %>.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

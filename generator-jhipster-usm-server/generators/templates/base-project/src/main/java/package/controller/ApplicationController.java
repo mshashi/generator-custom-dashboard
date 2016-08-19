@@ -1,4 +1,4 @@
-package <%= properties.packageName %>.controller;
+package <%= packageName %>.controller;
 
 import java.util.logging.Logger;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import <%= properties.packageName %>.service.ApplicationService;
-import <%= properties.packageName %>.dto.<%= properties.entityClass %>;
+import <%= packageName %>.service.ApplicationService;
+import <%= packageName %>.dto.<%= entityClass %>;
 
 @Controller
 public class ApplicationController extends BaseController{
@@ -35,11 +35,11 @@ public class ApplicationController extends BaseController{
     }
 
     @SuppressWarnings("rawtypes")
-	@RequestMapping(value="<%= properties.methodURL %>", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	    @ResponseBody ResponseEntity config(@RequestBody  final  <%= properties.entityClass %> request) {
+	@RequestMapping(value="<%= methodURL %>", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	    @ResponseBody ResponseEntity config(@RequestBody  final  <%= entityClass %> request) {
        
        try {
-            String apiUrl = "<%= properties.url %>";
+            String apiUrl = "<%= url %>";
 
             String URI = restEndHost + apiUrl;
            

@@ -17,7 +17,7 @@
 
 	<mvc:resources mapping="/**" location="/WEB-INF/" />
 
-	<bean id="jacksonObjectMapper" class="<%= properties.packageName %>.util.USMDashboardMapper" />
+	<bean id="jacksonObjectMapper" class="<%= packageName %>.util.USMDashboardMapper" />
 		
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver">
 	        <property name="prefix" value="/WEB-INF/"/>
@@ -79,17 +79,17 @@
 
 
 <!-- Controllers -->
-	<bean id="applicationController" class="<%= properties.packageName %>.controller.ApplicationController">
+	<bean id="applicationController" class="<%= packageName %>.controller.ApplicationController">
 	<constructor-arg ref="httpClient" />
 	<property name="restEndHost" value = "${host}" />
 	</bean>
 
 	<!-- Services -->
 
-	<bean id="applicationService" class="<%= properties.packageName %>.service.ApplicationService">
+	<bean id="applicationService" class="<%= packageName %>.service.ApplicationService">
 	
 	</bean>
 
-	<!-- <context:component-scan base-package="<%= properties.packageName %>" />  -->
+	<!-- <context:component-scan base-package="<%= packageName %>" />  -->
 
 </beans>

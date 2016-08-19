@@ -1,19 +1,28 @@
---- 
-projectName: 
+projectName: "MyProject"
+
+projectTLA: "tos"
+
+packageName: "com.pkrm.usm.dashboard.server"
+
+methodURL: "/getFeatures"
+
+restEndURL: "/getUSMFeatureDetails"
+
+entityClass: "USMRequest"
 
 host: 
  dev: http://localhost:9091
  local: http://localhost:8081
 
 POJO:
-  Employee:
+  USMRequest:
     variables:
-     - employeeId:
-         type: 'int'
-         default: 1
-     - employeeName:
-         type: 'String'
-         default: 'Shashi'
+      - featureName:
+          type: String
+          default:
+      - status:
+          type: String
+          default:
 
 
     

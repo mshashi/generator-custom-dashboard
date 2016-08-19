@@ -2,20 +2,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	
 	<modelVersion>4.0.0</modelVersion>
-	<groupId><%= properties.packageName %></groupId>
-	<artifactId><%= properties.projectName %></artifactId>
+	<groupId><%= packageName %></groupId>
+	<artifactId><%= projectName %></artifactId>
 	<version>A1</version>
 	<packaging>war</packaging>
   
 	<build>
-		<finalName><%= properties.projectName %></finalName>
+		<finalName><%= projectName %></finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<path>/<%= properties.projectName %></path>
+					<path>/<%= projectName %></path>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -62,7 +62,7 @@
 						</systemProperty>
 					</systemProperties>
 					<webAppConfig>
-						<contextPath>/<%= properties.tla %></contextPath>
+						<contextPath>/<%= tla %></contextPath>
 						<!-- <extraClasspath>target/test-classes/;target/classes/;</extraClasspath> -->
 						<extraClasspath>${project.basedir}/target/classes/;${project.basedir}/etc/jetty/classes/</extraClasspath>
 					</webAppConfig>

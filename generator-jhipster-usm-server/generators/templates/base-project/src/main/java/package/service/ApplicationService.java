@@ -1,4 +1,4 @@
-package <%= properties.packageName %>.service;
+package <%= packageName %>.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
