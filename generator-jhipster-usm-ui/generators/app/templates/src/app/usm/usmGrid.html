@@ -1,0 +1,48 @@
+<table>
+<thead>
+  <tr>
+    <td>Feature Group</td>
+    <td>Status</td>
+    <td>Action</td>
+  </tr>
+</thead>
+<tbody>
+<tr ng-repeat = "featureGroup in featureGroups" >
+  <td >{{featureGroup.featureName}}</td>
+  <td><span ng-show="!featureGroup.editMode">{{featureGroup.status}}</span>
+      <span ng-show="featureGroup.editMode"><input type="text" ng-model="featureGroup.status"/></span>
+  </td>
+  <td><span ng-show="!featureGroup.editMode"><button ng-click="featureGroup.editMode='true';">Edit</button></span>
+      <span ng-show="featureGroup.editMode">
+        <button ng-click="featureGroup.editMode=false;">Save</button>
+          <button ng-click="featureGroup.editMode=false;">Cancel</button>
+      </span>
+  </td>
+  </tr>
+</tbody>
+</table>
+
+<style>
+.usmModule{
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 10px;
+    width: 200px;
+    max-width: 400px;
+    background: #ff8533;
+
+}
+
+.usmModule hr{
+  border: 1px solid black;
+  border-color:black;
+}
+
+.usmModule span{
+  color:white;
+}
+
+.usmClickable{
+  cursor: pointer;
+}
+</style>
